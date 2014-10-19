@@ -161,6 +161,7 @@ module.exports = function (app, io) {
      Way to get event streams from the Sparks
      */
     spark.getEventStream('im-hit', false, function (data) {
+        console.log("data type", typeof data);
         if (data.indexOf('{') == -1) {
             return;
         }
