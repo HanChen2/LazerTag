@@ -13,12 +13,10 @@ var PlayerSchema = new mongoose.Schema({
 		type: String,
 		trim: true,
 	},
-
 	lives: {
 		type: Number,
 		default: 10
 	},
-
 	infraID: {
 		type: Number
 	},
