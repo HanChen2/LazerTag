@@ -20,7 +20,8 @@ angular.module('playerController', [])
 			// if form is empty, nothing will happen
 			if ($scope.formData.playerName != undefined &&
 				$scope.formData.deviceID != undefined &&
-				$scope.formData.infraID != undefined) {
+				$scope.formData.infraID != undefined &&
+				$scope.formData.phoneNumber != undefined) {
 
 				// call the create function from our service (returns a promise object)
 				Players.create($scope.formData)

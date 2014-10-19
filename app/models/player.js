@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 var PlayerSchema = new mongoose.Schema({
 	playerName: {
 		type: String,
-		trim: true,
+		trim: true
 	},
 
 	lives: {
@@ -19,6 +19,9 @@ var PlayerSchema = new mongoose.Schema({
 		default: 10
 	},
 
+	phoneNumber: {
+		type: Number
+	},
 	infraID: {
 		type: Number
 	},
