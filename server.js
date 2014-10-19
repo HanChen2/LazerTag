@@ -21,4 +21,4 @@ http.listen(process.env.PORT || 3000); //Run the server on port 3000
 var io = require('socket.io')(http);
 
 require('./app/routes/player')(app, io);
-console.log("Server now running on port 3000");
+console.log("Server now running on port", (process.env.PORT || 3000));
