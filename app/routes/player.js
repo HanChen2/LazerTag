@@ -4,6 +4,7 @@ var authToken = '1e1e0dfef2532a936093d3c3e21760b5';
 //require the Twilio module and create a REST client 
 var client = require('twilio')(accountSid, authToken); 
 
+var request = require('request')
 var Players = require('../models/player');
 var spark = require('spark');
 
@@ -119,17 +120,34 @@ function playerGotShot(req, res, deviceID) {
 	Way to get event streams from the Sparks
 */
 spark.getEventStream('button-pressed', false, function(data) {
-  console.log("Event: " + data);
 
-	var formData = {
-	  deviceID: data.data,
-	};
-
-	request.post({url:'http://localhost:3000/api/players', formData: formData},
-	function optionalCallback(err, httpResponse, body) {
-	  if (err) {
-	    return console.error('upload failed:', err);
-	  }
-  	console.log('Upload successful!  Server responded with:', body);
-	});
+	if (data) {
+		Players.findOne(
+			{deviceID: data.data}, //double check body or parems
+			function(err, player){
+			if(err){
+				res.send(400, err);
+				return;
+			}
+			//nasty but works for null values
+			if(player){
+				// get and return all the players after you create another
+				if (player.lives > 0){
+					console.log("Player is not dead");
+					player.update({ $inc: {lives: -1}}, function(err, player){});
+				}
+				if (player.lives == 1){
+					console.log("Player is not dead");
+					player.update({ $inc: {lives: -1}}, function(err, player){});
+					client.messages.create({ 
+						to: "8477014127", 
+						from: "+14843263088", 
+						body: "Thanks for playing!",   
+					}, function(err, message) { 
+						console.log(message.sid); 
+					});
+				}
+			}
+		});
+	}
 });
