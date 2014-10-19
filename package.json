@@ -1,0 +1,25 @@
+{
+  "name": "Mean_Stack_Tutorial",
+  "version": "1.0.0",
+  "description": "Mean Stack Tutorial for UIUC Hack Night #2",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/josneville/Mean_Stack_Tutorial.git"
+  },
+  "author": "Neville Jos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josneville/Mean_Stack_Tutorial/issues"
+  },
+  "homepage": "https://github.com/josneville/Mean_Stack_Tutorial",
+  "dependencies": {
+    "express": "~4.3.2",
+    "mongoose": "latest",
+    "morgan": "latest",
+    "body-parser": "latest"
+  }
+}
