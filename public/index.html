@@ -64,7 +64,7 @@
             <tr>
                 <th>{{$index + 1}}</th>
                 <th>{{player.playerName}}</th>
-                <th>{{player.lives}}</th>
+                <th>{{player.lives < 0 ? 0 : player.lives}}</th>
                 <th>
                     <div class="btn-group">
                         <!--<button type="button" id="charge_player" class="btn btn-default">$</button>-->
