@@ -162,6 +162,7 @@ module.exports = function (app, io) {
      */
     spark.getEventStream('im-hit', false, function (data) {
         console.log("data type", typeof data);
+        console.log("data", data);
         if (data.indexOf('{') == -1) {
             return;
         }
