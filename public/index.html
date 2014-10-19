@@ -34,20 +34,31 @@
 			<h1>Players</h1>
 			<br />
 			<h1>Total Players:  <span class="label label-info">{{ players.length }}</span></h1>
-		</div>
-
-		<!-- Players LIST -->
-		<div id="player-list" class="row">
-			<div class="col-sm-4 col-sm-offset-4">
-
-				<!-- LOOP OVER THE PLAYERS IN $scope.players -->
-		
-				<div class="checkbox" ng-repeat="player in players">
-					<label>
-						<input type="checkbox" ng-click="deletePlayer(player.deviceID)">{{player.playerName}} - {{player.lives}}
-					</label>
-				</div>
+			<div ng-repeat="player in players">
+				<span class="playerName">
+					{{player.playerName}}
+				</span>
+				<span class="playerLives">
+					{{player.lives}}
+				</span>
 			</div>
+				<table class="table">
+	      <thead>
+					<tr>
+						<td>1</td>
+						<td>Mark</td>
+						<td>Otto</td>
+						<td>@mdo</td>
+					</tr>
+				</thead>
+					<tbody ng-repeat="player in players track by $index">
+	        <tr>
+	          <th>{{$index + 1}}</th>
+	          <th>{{player.playerName}}</th>
+	          <th>{{player.lives}}</th>
+	        </tr>
+	      </tbody>
+	    </table>
 		</div>
 
 		<!-- FORM TO CREATE PLAYERS -->
@@ -56,14 +67,14 @@
 				<form>
 					<div class="form-group">
 
-						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<!-- BIND THESE VALUE TO formData IN ANGULAR -->
 						<input type="playerName" class="form-control input-lg text-center" placeholder="Player Name" ng-model="formData.playerName">
 
 						<input type="number" class="form-control input-lg text-center" placeholder="Number of Lives (default: 10)" ng-model="formData.lives">
 						<input type="phoneNumber" class="form-control input-lg text-center" placeholder="Phone Number" ng-model="formData.phoneNumber">
 
 						<input type="infraID" class="form-control input-lg text-center" placeholder="Insert infraID" ng-model="formData.infraID">
-						
+
 						<input type="deviceID" class="form-control input-lg text-center" placeholder="Insert deviceID" ng-model="formData.deviceID">
 
 					</div>
@@ -73,10 +84,6 @@
 				</form>
 			</div>
 		</div>
-
 	</div>
-	<!--
-	<pre>{{formData}}</pre>
-	-->
 </body>
 </html>
