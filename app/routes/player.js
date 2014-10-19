@@ -24,6 +24,7 @@ module.exports = function(app){
 		Players.create({
 			playerName: req.body.playerName,
 			lives: req.body.lives,
+			initLives: req.body.lives,
 			phoneNumber: req.body.phoneNumber,
 			infraID: req.body.infraID,
 			deviceID: req.body.deviceID

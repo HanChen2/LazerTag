@@ -39,7 +39,7 @@ angular.module('playerController', [])
 			Players.delete(deviceID)
 				// if successful creation, call our get function to get all the new todos
 				.success(function(data) {
-					$scope.todos = data; // assign our new list of todos
+					$scope.players = data; // assign our new list of todos
 				});
 		};
 	});

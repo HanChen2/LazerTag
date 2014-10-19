@@ -17,6 +17,14 @@ var PlayerSchema = new mongoose.Schema({
 		type: Number,
 		default: 10
 	},
+	initLives: {
+		type: Number,
+		default: 10
+	},
+	kills: {
+		type: Number,
+		default: 0
+	},
 	phoneNumber: {
 		type: Number
 	},
