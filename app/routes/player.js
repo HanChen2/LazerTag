@@ -171,6 +171,7 @@ module.exports = function (app, io) {
             Players.findOne(
                 {deviceID: data.coreid}, //double check body or parems
                 function (err, player) {
+                    console.log('player', player);
                     if (err) {
                         res.send(400, err);
                         return;
