@@ -162,16 +162,16 @@ module.exports = function (app, io) {
      */
     spark.getEventStream('im-hit', false, function (data) {
         console.log('hit!', data);
-        if (data) {
+        if (data && data['coreid']) {
             io.emit('on-kill', {
-                'killerInfraID': data.data,
-                'victimDeviceID': data.coreid
+                'killerInfraID': data['data'],
+                'victimDeviceID': data['coreid']
             });
 
             Players.findOne(
                 {deviceID: data.coreid}, //double check body or parems
                 function (err, player) {
-                    console.log('coreid', data.coreid);
+                    console.log('coreid', data['coreid']);
                     console.log('player', player);
                     if (err) {
                         res.send(400, err);
