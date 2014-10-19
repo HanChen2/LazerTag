@@ -59,7 +59,7 @@
                 <td>Controls</td>
             </tr>
             </thead>
-            <tbody ng-repeat="player in players">
+            <tbody ng-repeat="player in players | orderBy:'lives':true">
             <tr>
                 <th>{{$index + 1}}</th>
                 <th>{{player.playerName}}</th>
