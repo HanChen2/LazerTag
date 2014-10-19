@@ -161,7 +161,8 @@ module.exports = function (app, io) {
      Way to get event streams from the Sparks
      */
     spark.getEventStream('im-hit', false, function (data) {
-        console.log('hit!', data);
+        console.log('hit!1', data);
+        console.log('hit!', typeof data);
         if (data && data['coreid']) {
             io.emit('on-kill', {
                 'killerInfraID': data['data'],
