@@ -65,7 +65,7 @@ angular.module('playerController', [])
             'http://f.cl.ly/items/2F000T0s0H1g0h3K3T2j/Big%20Bomb-SoundBible.com-1219802495%20(1).mp3',
             'http://f.cl.ly/items/3q3Q1u160G153t2X3R24/rpg.mp3',
             'http://f.cl.ly/items/3541430y1e1D2X1W293Q/Explosion%20And%20Debris-SoundBible.com-2114990202.mp3',
-            
+
         ];
         socket.on('on-kill', function(killData) {
             var bombNoise = bombNoises[parseInt(Math.random() * bombNoises.length)];
