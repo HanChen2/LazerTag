@@ -165,6 +165,8 @@ module.exports = function (app, io) {
             return;
         }
 
+        data = data.substring(data.indexOf('{')).trim();
+
         data = JSON.parse(data);
 
         if (data && data['coreid']) {
