@@ -4,84 +4,105 @@
 <!-- ASSIGN OUR ANGULAR MODULE -->
 <html ng-app="scotchPlayer">
 <head>
-	<!-- META -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Optimize mobile viewport -->
 
-	<title>LazerTag</title>
+    <title>LazerTag</title>
 
-	<!-- SCROLLS -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
-	<style>
-		html 					{ overflow-y:scroll; }
-		body 					{ padding-top:50px; }
-		#player-list 			{ margin-bottom:30px; }
-		th 						{ text-align: center; }
-	</style>
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <!-- load bootstrap -->
+    <style>
+        html {
+            overflow-y: scroll;
+        }
 
-	<!-- SPELLS -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
-	<script src="core.js"></script>
-	<script src="controller.js"></script>
-	<script src="service.js"></script>
+        body {
+            padding-top: 50px;
+        }
+
+        #player-list {
+            margin-bottom: 30px;
+        }
+
+        th {
+            text-align: center;
+        }
+    </style>
+
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <!-- load jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <!-- load angular -->
+    <script src="core.js"></script>
+    <script src="controller.js"></script>
+    <script src="service.js"></script>
 </head>
 <!-- SET THE CONTROLLER AND GET ALL PLAYERS -->
 <body ng-controller="mainController">
-	<div class="container">
+<div class="container">
 
-		<!-- HEADER AND PLAYER COUNT -->
-		<div class="jumbotron text-center">
-			<h1>Lazer Tag</h1>
-				<p> Total Players: <span class="label label-info">{{ players.length }}</span></p>
-				<table class="table">
-	      		<thead>
-					<tr>
-						<td>Rank</td>
-						<td>Name</td>
-						<td>Lives</td>
-						<td>Controls</td>
-					</tr>
-				</thead>
-					<tbody ng-repeat="player in players">
-	        <tr>
-	          <th>{{$index + 1}}</th>
-	          <th>{{player.playerName}}</th>
-	          <th>{{player.lives}}</th>
-	          <th>
-	          	<div class="btn-group">
-				  <button type="button" id="charge_player" class="btn btn-default">$</button>
-				  <button type="button" id="delete_player" class="btn btn-default">x</button>
-				</div>
-			  </th>
-	        </tr>
-	      </tbody>
-	    </table>
-		</div>
+    <!-- HEADER AND PLAYER COUNT -->
+    <div class="jumbotron text-center">
+        <h1>Lazer Tag</h1>
 
-		<!-- FORM TO CREATE PLAYERS -->
-		<div id="player-form" class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<form>
-					<div class="form-group">
+        <p> Total Players: <span class="label label-info">{{ players.length }}</span></p>
+        <table class="table">
+            <thead>
+            <tr>
+                <td>Rank</td>
+                <td>Name</td>
+                <td>Lives</td>
+                <td>Controls</td>
+            </tr>
+            </thead>
+            <tbody ng-repeat="player in players">
+            <tr>
+                <th>{{$index + 1}}</th>
+                <th>{{player.playerName}}</th>
+                <th>{{player.lives}}</th>
+                <th>
+                    <div class="btn-group">
+                        <button type="button" id="charge_player" class="btn btn-default">$</button>
+                        <button type="button" id="delete_player" class="btn btn-default">x</button>
+                    </div>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-						<!-- BIND THESE VALUE TO formData IN ANGULAR -->
-						<input type="playerName" class="form-control input-lg text-center" placeholder="Player Name" ng-model="formData.playerName">
+    <!-- FORM TO CREATE PLAYERS -->
+    <div id="player-form" class="row">
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+            <form>
+                <div class="form-group">
 
-						<input type="number" class="form-control input-lg text-center" placeholder="Number of Lives (default: 10)" ng-model="formData.lives">
-						<input type="phoneNumber" class="form-control input-lg text-center" placeholder="Phone Number" ng-model="formData.phoneNumber">
+                    <!-- BIND THESE VALUE TO formData IN ANGULAR -->
+                    <input type="playerName" class="form-control input-lg text-center" placeholder="Player Name"
+                           ng-model="formData.playerName">
 
-						<input type="infraID" class="form-control input-lg text-center" placeholder="infraID" ng-model="formData.infraID">
+                    <input type="number" class="form-control input-lg text-center"
+                           placeholder="Number of Lives (default: 10)" ng-model="formData.lives">
+                    <input type="phoneNumber" class="form-control input-lg text-center" placeholder="Phone Number"
+                           ng-model="formData.phoneNumber">
 
-						<input type="deviceID" class="form-control input-lg text-center" placeholder="Insert deviceID" ng-model="formData.deviceID">
+                    <input type="infraID" class="form-control input-lg text-center" placeholder="infraID"
+                           ng-model="formData.infraID">
 
-					</div>
+                    <input type="deviceID" class="form-control input-lg text-center" placeholder="Insert deviceID"
+                           ng-model="formData.deviceID">
 
-					<!-- createPlayer() WILL CREATE NEW PLAYERS -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createPlayer()">Add</button>
-				</form>
-			</div>
-		</div>
-	</div>
+                </div>
+
+                <!-- createPlayer() WILL CREATE NEW PLAYERS -->
+                <button type="submit" class="btn btn-primary btn-lg" ng-click="createPlayer()">Add</button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

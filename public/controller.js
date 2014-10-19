@@ -34,7 +34,7 @@ angular.module('playerController', [])
 			}
 		};
 		// DELETE ==================================================================
-		// delete a todo after checking it
+		// delete a to-do after checking it
 		$scope.deletePlayer = function(deviceID) {
 			Players.delete(deviceID)
 				// if successful creation, call our get function to get all the new todos
