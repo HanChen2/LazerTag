@@ -36,6 +36,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- load jquery -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <!-- load angular -->
     <script src="core.js"></script>
     <script src="controller.js"></script>
@@ -59,15 +60,15 @@
                 <td>Controls</td>
             </tr>
             </thead>
-            <tbody ng-repeat="player in players | orderBy:'lives':true">
+            <tbody ng-repeat="player in players | orderBy:[negInt, 'playerName']">
             <tr>
                 <th>{{$index + 1}}</th>
                 <th>{{player.playerName}}</th>
                 <th>{{player.lives}}</th>
                 <th>
                     <div class="btn-group">
-                        <button type="button" id="charge_player" class="btn btn-default">$</button>
-                        <button type="button" id="delete_player" class="btn btn-default">x</button>
+                        <!--<button type="button" id="charge_player" class="btn btn-default">$</button>-->
+                        <button type="button" id="delete_player" class="btn btn-default" ng-click="deletePlayer(player.deviceID)">x</button>
                     </div>
                 </th>
             </tr>
@@ -102,6 +103,7 @@
                 <button type="submit" class="btn btn-primary btn-lg" ng-click="createPlayer()">Add</button>
             </form>
         </div>
+        <button type="submit" class="btn btn-primary btn-lg" ng-click="resetGame()">Reset Game</button>
     </div>
 </div>
 </body>

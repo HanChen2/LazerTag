@@ -16,7 +16,9 @@ mongoose.connect("localhost:27017/myDataBase");
 
 app.use(express.static(__dirname + "/public")); // Automatic routing for all static files
 
-require('./app/routes/player')(app);
 
-app.listen(process.env.PORT || 3000); //Run the server on port 3000
+var http = app.listen(process.env.PORT || 3000); //Run the server on port 3000
+var io = require('socket.io')(http);
+
+require('./app/routes/player')(app, io);
 console.log("Server now running on port 3000");

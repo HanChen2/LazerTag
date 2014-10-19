@@ -14,7 +14,10 @@ angular.module('playerService', [])
 				return $http.post('/api/players', deviceID);
 			},
 			delete : function(deviceID) {
-				return $http.delete('/api/players/', deviceID);
-			}
+				return $http.delete('/api/players/' + deviceID);
+			},
+            reset: function() {
+                return $http.get('/api/reset');
+            }
 		}
 	});
