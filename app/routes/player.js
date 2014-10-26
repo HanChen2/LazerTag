@@ -1,5 +1,5 @@
-var accountSid = 'AC6f1dfc2183d8c63aea6fc04ffd8838d0';
-var authToken = '1e1e0dfef2532a936093d3c3e21760b5';
+var accountSid = 'YOUR TWILIO ACCOUNT SID';
+var authToken = 'YOUR TWILIO AUTHTOKEN';
 
 //require the Twilio module and create a REST client 
 var client = require('twilio')(accountSid, authToken);
@@ -8,7 +8,7 @@ var request = require('request')
 var Players = require('../models/player');
 var spark = require('spark');
 
-spark.login({accessToken: '7dced5eb59950c74101a99ac0e5213867f86f28c'});
+spark.login({accessToken: 'YOUR SPARK ACCESSTOKEN'});
 
 var connectedClients = [];
 
@@ -197,8 +197,8 @@ module.exports = function (app, io) {
                             player.update({ $inc: {lives: -1}}, function (err, player) {
                             });
                             client.messages.create({
-                                to: "8477014127",
-                                from: "+14843263088",
+                                to: "PLAYER PHONE NUMBER",
+                                from: "+YOUR TWILIO PHONE NUMBER",
                                 body: "Thanks for playing!"
                             }, function (err, message) {
                                 console.log(message.sid);
